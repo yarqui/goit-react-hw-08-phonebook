@@ -4,7 +4,7 @@ import {
   InputLabel,
   InputField,
 } from 'components/ContactForm/ContactForm.styled';
-import { filterInitialState, setContactFilter } from 'redux/filterSlice';
+import { setContactFilter } from 'redux/filterSlice';
 
 const Filter = () => {
   const dispatch = useDispatch();
@@ -14,7 +14,7 @@ const Filter = () => {
 
     value
       ? dispatch(setContactFilter(value.trim().toLowerCase()))
-      : dispatch(setContactFilter(filterInitialState));
+      : dispatch(setContactFilter(''));
   };
 
   return (
