@@ -1,27 +1,16 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  handlePending,
+  handleRejected,
+  isPendingAction,
+  isRejectedAction,
+} from './common/common';
 import { addContact, deleteContact, fetchContacts } from './operations';
 
 const contactsInitialState = {
   items: [],
   isLoading: false,
   error: null,
-};
-
-const isPendingAction = action => {
-  return action.type.endsWith('pending');
-};
-
-const isRejectedAction = action => {
-  return action.type.endsWith('rejected');
-};
-
-const handlePending = state => {
-  state.isLoading = true;
-};
-
-const handleRejected = (state, action) => {
-  state.isLoading = false;
-  state.error = action.payload;
 };
 
 export const contactsSlice = createSlice({

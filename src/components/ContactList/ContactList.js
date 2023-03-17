@@ -6,7 +6,6 @@ import {
   selectIsLoading,
   selectVisibleContacts,
 } from 'redux/selectors';
-import { DeleteButton, ContactItem } from './ContactList.styled';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -23,9 +22,9 @@ const ContactList = () => {
       {showError && <p>{error.message}</p>}
 
       {visibleContacts.map(({ id, name, number }) => (
-        <ContactItem key={id}>
+        <li key={id}>
           {name}: {number}
-          <DeleteButton
+          <button
             id={id}
             type="button"
             onClick={() => {
@@ -34,8 +33,8 @@ const ContactList = () => {
             disabled={isLoading}
           >
             Delete
-          </DeleteButton>
-        </ContactItem>
+          </button>
+        </li>
       ))}
     </>
   );

@@ -1,39 +1,42 @@
+// import { useDispatch } from 'react-redux';
+import { lazy, useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Section from './Section';
-import Filter from './Filter';
 import Layout from './Layout';
-import { List } from './ContactList/ContactList.styled';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
+// import { fetchContacts } from 'redux/operations';
+import PAGE_NAMES from 'router/paths';
+import 'react-toastify/dist/ReactToastify.css';
+
+const Home = lazy(() => import('../pages/Home'));
+const LogIn = lazy(() => import('../pages/LogIn'));
+const Register = lazy(() => import('../pages/Register'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+const NotFound = lazy(() => import('../pages/NotFound'));
 
 const App = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchContacts());
+  // }, [dispatch]);
 
   return (
-    <Layout>
-      <Section title="Phonebook">
-        <ContactForm />
-      </Section>
-      <Section title="Contacts">
-        <Filter />
-        <List>
-          <ContactList />
-        </List>
-      </Section>
+    <>
+      <Routes>
+        <Route exact path={PAGE_NAMES.homepage} element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path={PAGE_NAMES.login} element={<LogIn />} />
+          <Route path={PAGE_NAMES.register} element={<Register />} />
+          <Route path={PAGE_NAMES.contacts} element={<Contacts />} />
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
       <ToastContainer
         theme="dark"
         position="top-center"
         autoClose="1500"
       ></ToastContainer>
-    </Layout>
+    </>
   );
 };
 

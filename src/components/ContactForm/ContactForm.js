@@ -1,6 +1,5 @@
 import { useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
-import { Form, InputLabel, InputField, AddButton } from './ContactForm.styled';
 import { toast } from 'react-toastify';
 import { addContact } from 'redux/operations';
 import { useDispatch, useSelector } from 'react-redux';
@@ -59,9 +58,9 @@ const ContactForm = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <InputLabel htmlFor={nameInputId}>Name</InputLabel>
-      <InputField
+    <form onSubmit={handleSubmit}>
+      <label htmlFor={nameInputId}>Name</label>
+      <input
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -74,8 +73,8 @@ const ContactForm = () => {
         value={name}
       />
 
-      <InputLabel htmlFor={numberInputId}>Number</InputLabel>
-      <InputField
+      <label htmlFor={numberInputId}>Number</label>
+      <input
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -87,10 +86,10 @@ const ContactForm = () => {
         onChange={handleChange}
         value={number}
       />
-      <AddButton type="submit" disabled={isLoading}>
+      <button type="submit" disabled={isLoading}>
         {isLoading ? 'Adding contact...' : 'Add contact'}
-      </AddButton>
-    </Form>
+      </button>
+    </form>
   );
 };
 
