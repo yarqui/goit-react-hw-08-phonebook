@@ -21,10 +21,6 @@ const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(fetchContacts());
-  // }, [dispatch]);
-
   return (
     <>
       <Routes>
