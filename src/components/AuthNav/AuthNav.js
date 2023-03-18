@@ -1,6 +1,7 @@
 import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
 import { useAuth } from 'hooks';
 import { AuthMenuWrap } from './AuthNav.styled';
+
 const AuthNav = () => {
   const { isRefreshing } = useAuth();
 
