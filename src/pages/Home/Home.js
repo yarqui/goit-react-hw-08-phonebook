@@ -1,5 +1,7 @@
+import { MainTitle } from './Home.styled';
+
 const Home = () => {
-  return <h1>🖐Hi there! Welcome to Contacts App</h1>;
+  return <MainTitle>🖐Hi there! Welcome to Contacts App</MainTitle>;
 };
 
 export default Home;

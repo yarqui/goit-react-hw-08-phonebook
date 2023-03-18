@@ -6,10 +6,13 @@ import { store } from 'redux/store';
 import App from 'components/App';
 import './index.css';
 
+// TODO: figure out how to properly locate and name common.js
+// TODO: check propTypes
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter basename="goit-react-hw-08-phonebook-mui">
+      <BrowserRouter basename="goit-react-hw-08-phonebook">
         <App />
       </BrowserRouter>
     </Provider>

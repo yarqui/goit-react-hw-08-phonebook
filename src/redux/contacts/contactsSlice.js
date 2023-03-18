@@ -4,7 +4,7 @@ import {
   handleRejected,
   isPendingAction,
   isRejectedAction,
-} from './common/common';
+} from '../common/common';
 import { addContact, deleteContact, fetchContacts } from './operations';
 
 const contactsInitialState = {

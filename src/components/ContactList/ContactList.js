@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/operations';
+import { deleteContact } from 'redux/contacts/operations';
 import {
   selectError,
   selectIsLoading,
   selectVisibleContacts,
-} from 'redux/selectors';
+} from 'redux/contacts/selectors';
+import { ContactItem, DeleteButton } from './ContactList.styled';
 
 const ContactList = () => {
   const dispatch = useDispatch();
@@ -22,9 +23,9 @@ const ContactList = () => {
       {showError && <p>{error.message}</p>}
 
       {visibleContacts.map(({ id, name, number }) => (
-        <li key={id}>
+        <ContactItem key={id}>
           {name}: {number}
-          <button
+          <DeleteButton
             id={id}
             type="button"
             onClick={() => {
@@ -33,8 +34,8 @@ const ContactList = () => {
             disabled={isLoading}
           >
             Delete
-          </button>
-        </li>
+          </DeleteButton>
+        </ContactItem>
       ))}
     </>
   );

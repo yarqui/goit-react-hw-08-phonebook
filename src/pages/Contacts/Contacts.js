@@ -4,7 +4,8 @@ import Filter from 'components/Filter';
 import Section from 'components/Section';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
+import { fetchContacts } from 'redux/contacts/operations';
+import { List } from 'components/ContactList/ContactList.styled';
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -15,16 +16,15 @@ const Contacts = () => {
 
   return (
     <>
-      <p>Contacts</p>
       <Section title="Phonebook">
         <ContactForm />
       </Section>
       <Section title="Contacts">
         <Filter />
 
-        <ul>
+        <List>
           <ContactList />
-        </ul>
+        </List>
       </Section>
     </>
   );

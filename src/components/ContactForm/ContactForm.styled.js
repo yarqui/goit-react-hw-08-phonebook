@@ -20,7 +20,8 @@ export const InputLabel = styled.label`
 `;
 
 export const InputField = styled.input`
-  margin-top: 5px;
+  margin-top: 8px;
+  /* margin-left: 8px; */
 
   border: 1px dashed #676767;
   border-radius: 5px;

@@ -1,11 +1,16 @@
-import { NavLink } from 'react-router-dom';
-
+import { NavLinkStyled } from 'components/Navigation/Navigation.styled';
+import { useAuth } from 'hooks';
+import { AuthMenuWrap } from './AuthNav.styled';
 const AuthNav = () => {
+  const { isRefreshing } = useAuth();
+
   return (
-    <div>
-      <NavLink to="/register">Register</NavLink>
-      <NavLink to="/login">Log In</NavLink>
-    </div>
+    !isRefreshing && (
+      <AuthMenuWrap>
+        <NavLinkStyled to="/register">Register</NavLinkStyled>
+        <NavLinkStyled to="/login">Log In</NavLinkStyled>
+      </AuthMenuWrap>
+    )
   );
 };
 

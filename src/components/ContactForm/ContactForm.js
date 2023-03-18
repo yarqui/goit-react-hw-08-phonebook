@@ -1,9 +1,10 @@
 import { useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { toast } from 'react-toastify';
-import { addContact } from 'redux/operations';
+import { addContact } from 'redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts, selectIsLoading } from 'redux/selectors';
+import { selectContacts, selectIsLoading } from 'redux/contacts/selectors';
+import { Form, InputLabel, InputField, AddButton } from './ContactForm.styled';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
@@ -58,9 +59,9 @@ const ContactForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor={nameInputId}>Name</label>
-      <input
+    <Form onSubmit={handleSubmit}>
+      <InputLabel htmlFor={nameInputId}>Name</InputLabel>
+      <InputField
         type="text"
         name="name"
         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -73,8 +74,8 @@ const ContactForm = () => {
         value={name}
       />
 
-      <label htmlFor={numberInputId}>Number</label>
-      <input
+      <InputLabel htmlFor={numberInputId}>Number</InputLabel>
+      <InputField
         type="tel"
         name="number"
         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -86,10 +87,10 @@ const ContactForm = () => {
         onChange={handleChange}
         value={number}
       />
-      <button type="submit" disabled={isLoading}>
+      <AddButton type="submit" disabled={isLoading}>
         {isLoading ? 'Adding contact...' : 'Add contact'}
-      </button>
-    </form>
+      </AddButton>
+    </Form>
   );
 };
 
